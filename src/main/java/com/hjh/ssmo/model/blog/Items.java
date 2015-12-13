@@ -1,6 +1,7 @@
-package com.hjh.ssmo.model;
+package com.hjh.ssmo.model.blog;
 
 public class Items {
+	private String uuid;
 	private String name;
 	private float price;
 	private String detail;
@@ -27,5 +28,13 @@ public class Items {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 }
