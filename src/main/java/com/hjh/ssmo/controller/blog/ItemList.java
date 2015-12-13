@@ -1,4 +1,4 @@
-package com.hjh.ssmo.ssmo.oa.controller;
+package com.hjh.ssmo.controller.blog;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,0 +1,9 @@
+target/
+target/classes/config.properties
+target/m2e-jee/web-resources/META-INF/maven/hjh.ssmo/ssmo/pom.xml
+target/m2e-jee/web-resources/META-INF/maven/hjh.ssmo/ssmo/pom.properties
+target/classes/log4j.properties
+target/classes/spring/spring-mvc.xml
+target/m2e-jee/web-resources/META-INF/MANIFEST.MF
+target/classes/spring/spring-core.xml
+target/classes/workLog.doc
