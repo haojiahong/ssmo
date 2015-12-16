@@ -14,7 +14,7 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd ">
 	<!--此注解驱动器默认绑定了很多参数绑定方法，比如json转换解析器就默认加载了 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
+
 	<!-- 自动扫描controller层Bean -->
 	<context:component-scan base-package="com.hjh.ssmo.controller"></context:component-scan>
 
@@ -24,4 +24,14 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+
+	<!-- 静态资源映射 -->
+	<mvc:resources mapping="/jslib/**" location="/jslib/" />
+	<mvc:resources mapping="/cssstyle/**" location="/cssstyle/" />
+	<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/fonts/**" location="/fonts/" />
+	<mvc:resources mapping="/xiu/**" location="/xiu/" />
+	<mvc:resources mapping="/uploads/**" location="/uploads/" />
+	<mvc:resources mapping="/robots.txt" location="/robots.txt" />
 </beans>

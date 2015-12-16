@@ -51,6 +51,13 @@
 			<version>1.2.7</version>
 		</dependency>
 
+		<!--Gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3</version>
+		</dependency>
+
 		<!--kaptcha 验证码 -->
 		<dependency>
 			<groupId>com.google.code.kaptcha</groupId>
@@ -188,7 +195,7 @@
 			<version>1.2.3</version>
 		</dependency>
 
-		
+
 
 	</dependencies>
 	<build>

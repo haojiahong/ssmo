@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hjh.ssmo.mapper.blog.ItemsMapper">
 
-	<!-- 根据id获取用户信息 -->
 	<select id="findAllItems" resultType="com.hjh.ssmo.model.blog.Items">
 		select * from itemtest
 		where 1=1
