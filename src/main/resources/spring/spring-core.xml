@@ -17,7 +17,7 @@
 	<context:component-scan base-package="com.hjh.ssmo.service,com.hjh.ssmo.util" />
 
 	<!-- 引入属性文件 -->
-	<context:property-placeholder location="classpath:/config.properties" />
+	<context:property-placeholder location="classpath:/db.properties" />
 
 	<!-- 数据源配置 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"

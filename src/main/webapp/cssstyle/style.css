@@ -319,7 +319,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
   z-index: 2030;
 }
 .navbar-fixed-top,
-.navbar-static-top {
+.navbar-static-top { 
   background: #f3f3f4;
 }
 .fixed-nav #wrapper {
@@ -1617,7 +1617,7 @@ table.dataTable thead .sorting:after {
   text-transform: uppercase;
 }
 /* PEACE */
-.pace {
+/* .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
   -webkit-user-select: none;
@@ -1638,7 +1638,7 @@ table.dataTable thead .sorting:after {
 }
 .pace-inactive {
   display: none;
-}
+} */
 /* WIDGETS */
 .widget {
   border-radius: 5px;
@@ -2870,7 +2870,7 @@ a.forum-item-title:hover {
 }
 body {
   font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #2f4050;
+  background-color: #23C6C8;
   font-size: 13px;
   color: #676a6c;
   overflow-x: hidden;

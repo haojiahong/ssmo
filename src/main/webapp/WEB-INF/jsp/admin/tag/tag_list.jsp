@@ -10,7 +10,12 @@
 	<link href="${pageContext.request.contextPath}/jslib/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
 	<link href="${pageContext.request.contextPath}/cssstyle/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" >
 	<link href="${pageContext.request.contextPath}/cssstyle/animate.css" rel="stylesheet" type="text/css" >
-	  <link href="${pageContext.request.contextPath}/cssstyle/style.css" rel="stylesheet" type="text/css" >
+	<!-- pace -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/jquery-plugins/pace/pace-theme-barber-shop.css" />
+	<!-- 提示框 -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/flavr.css" />
+	<link href="${pageContext.request.contextPath}/cssstyle/style.css" rel="stylesheet" type="text/css" >
 	
 </head>
 <body>
@@ -18,7 +23,7 @@
   
 <div id="page-wrapper"  class="gray-bg dashbard-1">
 <div class="row wrapper border-bottom white-bg page-heading">
-	<div class="col-lg-10">
+	<div class="col-md-10">
 	    <h2>标签列表</h2>
 	    <ol class="breadcrumb">
 	        <li>
@@ -32,14 +37,14 @@
 	        </li>
 	    </ol>
 	</div>
-    <div class="col-lg-2">
+    <div class="col-md-2">
 
     </div>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
-<div class="col-lg-12">
+<div class="col-md-12">
 <div class="ibox float-e-margins">
 <div class="ibox-content">
 <div class="row">
@@ -52,8 +57,11 @@
 			    </span>
 		    </div>
 	     </div>
+	     <div class="col-sm-3">
+		     <button type="button" class="btn btn-sm btn-danger" onclick="addTag()">新增标签</button>
+	     </div>
 	     
-	     <button type="button" class="btn btn-sm btn-danger" onclick="addTag()">新增标签</button>
+	     <div class="col-sm-6"></div>
      </form>
 </div>
        
@@ -71,5 +79,35 @@
 
 </div>
 </div>
+
+<!-- 编辑页面 -->
+<div class="modal inmodal" id="editTagModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+	<div id="editTagContent" class="modal-body">
+          
+	</div>                  
+</div>											                                    
+</div>
+    
+    
+<!-- 新增页面 -->
+<div class="modal inmodal" id="addTagModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+	<div id="addTagContent" class="modal-body">
+	
+	</div>                  
+</div>												                                    
+</div>
+
+<!-- Mainly scripts -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-plugins/pace/pace.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/flavr/flavr/js/flavr.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/flavr/base.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/hplus.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/validation.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/tag/tag.js"></script>
+
 </body>
 </html>

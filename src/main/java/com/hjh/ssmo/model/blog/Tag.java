@@ -10,16 +10,8 @@ package com.hjh.ssmo.model.blog;
  * 
  */
 public class Tag {
-	private String uuid;
+	private Integer id;
 	private String tagName;
-
-	public String getUuid() {
-		return uuid;
-	}
-
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
-	}
 
 	public String getTagName() {
 		return tagName;
@@ -27,6 +19,14 @@ public class Tag {
 
 	public void setTagName(String tagName) {
 		this.tagName = tagName;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }
