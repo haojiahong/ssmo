@@ -16,4 +16,6 @@ public interface TagService {
 
 	public int addTag(Tag tag);
 
+	public int deleteTag(String id);
+
 }

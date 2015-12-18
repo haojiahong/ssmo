@@ -46,4 +46,8 @@
 		</selectKey>
 	</insert>
 
+	<delete id="deleteTag" parameterType="string">
+		delete from t_tag where id
+		= #{id}
+	</delete>
 </mapper>

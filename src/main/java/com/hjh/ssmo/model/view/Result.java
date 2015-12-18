@@ -1,37 +1,37 @@
 package com.hjh.ssmo.model.view;
 
-import org.apache.log4j.Logger;
-
 import com.hjh.ssmo.util.config.CompositeFactory;
 
 /**
- * @功能： 操作处理结果
- * @作者： ljt
- * @时间： 2014-4-12 下午9:56:54
+ * 操作处理结果
+ * 
+ * @author haojiahong
+ * 
+ * @createtime：2015-12-18 上午9:10:08
+ * 
+ * 
  */
 public class Result {
-
-	private static final Logger logger = Logger.getLogger(Result.class);
 
 	// 操作结果
 	private String resultCode;
 
-	// 错误信息
-	private String errorInfo;
+	// 返回前台信息
+	private String info;
 
 	// 附属对象
 	private Object object;
 
-	public Result(String resultCode, String errorInfo) {
+	public Result(String resultCode, String info) {
 		super();
 		this.resultCode = resultCode;
-		this.errorInfo = CompositeFactory.getString(errorInfo);
+		this.info = CompositeFactory.getString(info);
 	}
 
 	public Result(String resultCode, String errorInfo, Object object) {
 		super();
 		this.resultCode = resultCode;
-		this.errorInfo = CompositeFactory.getString(errorInfo);
+		this.info = CompositeFactory.getString(errorInfo);
 		this.object = object;
 	}
 
@@ -43,20 +43,20 @@ public class Result {
 		this.resultCode = resultCode;
 	}
 
-	public String getErrorInfo() {
-		return errorInfo;
-	}
-
-	public void setErrorInfo(String errorInfo) {
-		this.errorInfo = errorInfo;
-	}
-
 	public Object getObject() {
 		return object;
 	}
 
 	public void setObject(Object object) {
 		this.object = object;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 }

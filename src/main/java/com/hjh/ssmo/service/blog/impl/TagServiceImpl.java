@@ -43,4 +43,9 @@ public class TagServiceImpl implements TagService {
 	public int addTag(Tag tag) {
 		return tagMapper.addTag(tag);
 	}
+
+	@Override
+	public int deleteTag(String id) {
+		return tagMapper.deleteTag(id);
+	}
 }

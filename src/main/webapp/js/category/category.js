@@ -1,16 +1,16 @@
 $(function() {
 	// 加载管理员列表
-	loadTagList();
+	loadCategoryList();
 })
 
 // 跳转分页
 function toPage(page) {
 	$("#page").val(page);
-	loadTagList();
+	loadCategoryList();
 }
 
 // 加载列表
-function loadTagList() {
+function loadCategoryList() {
 	// 收集参数
 	var param = buildParam();
 
@@ -21,7 +21,7 @@ function loadTagList() {
 
 	// 查询列表
 	$.ajax({
-		url : getRootPath() + 'admin/tag/load',
+		url : getRootPath() + 'admin/category/load',
 		data : 'page=' + page + "&param=" + param,
 		success : function(data) {
 			$("#dataList").html(data);
@@ -35,24 +35,24 @@ function buildParam() {
 	var param = {};
 	var keyword = $("#keyword").val();
 	if (!isEmpty(keyword)) {
-		param["tagName"] = encodeURI(encodeURI(keyword));
+		param["categoryName"] = encodeURI(encodeURI(keyword));
 	}
 	return JSON.stringify(param);
 }
 
 // 搜索
 function search() {
-	loadTagList();
+	loadCategoryList();
 }
 
 // 删除
-function deleteTag(id) {
+function deleteCategory(id) {
 	$.ajax({
-		url : getRootPath() + 'admin/tag/delete/' + id,
+		url : getRootPath() + 'admin/category/delete/' + id,
 		success : function(data) {
 			if (data.resultCode == 'success') {
 				autoCloseAlert(data.info, 1000);
-				loadTagList();
+				loadCategoryList();
 			} else {
 				autoCloseAlert(data.info, 1000);
 			}
@@ -61,39 +61,39 @@ function deleteTag(id) {
 }
 
 // 跳转编辑页
-function editTag(id) {
+function editCategory(id) {
 	$.ajax({
-		url : getRootPath() + 'admin/tag/editJump/' + id,
+		url : getRootPath() + 'admin/category/editJump/' + id,
 		success : function(data) {
-			$('#editTagContent').html(data);
-			$('#editTagModal').modal('show');
-			$('#editTagModal').addClass('animated');
-			$('#editTagModal').addClass('flipInY');
+			$('#editCategoryContent').html(data);
+			$('#editCategoryModal').modal('show');
+			$('#editCategoryModal').addClass('animated');
+			$('#editCategoryModal').addClass('flipInY');
 		}
 	});
 }
 
 // 关闭编辑窗口
 function closeEditWindow() {
-	$('#editTagModal').modal('hide');
+	$('#editCategoryModal').modal('hide');
 }
 
 // 关闭新增窗口
 function closeAddWindow() {
-	$('#addTagModal').modal('hide');
+	$('#addCategoryModal').modal('hide');
 }
 
 // 保存编辑
-function saveEditTag() {
-	if (validateTag()) {
+function saveEditCategory() {
+	if (validateCategory()) {
 		$.ajax({
-			url : getRootPath() + 'admin/tag/edit',
+			url : getRootPath() + 'admin/category/edit',
 			type : 'post',
 			data : $("#editForm").serialize(),
 			success : function(data) {
 				if (data.resultCode == 'success') {
-					$('#editTagModal').modal('hide');
-					loadTagList();
+					$('#editCategoryModal').modal('hide');
+					loadCategoryList();
 					autoCloseAlert(data.info, 1000);
 				} else {
 					autoCloseAlert(data.info, 1000);
@@ -104,15 +104,16 @@ function saveEditTag() {
 }
 
 // 保存新增
-function saveAddTag() {
-	if (validateTag()) {
+function saveAddCategory() {
+	if (validateCategory()) {
 		$.ajax({
-			url : getRootPath() + 'admin/tag/add',
-			data : encodeURI($("#addForm").serialize()),
+			url : getRootPath() + 'admin/category/add',
+			type : 'post',
+			data : $("#addForm").serialize(),
 			success : function(data) {
 				if (data.resultCode == 'success') {
-					$('#addTagModal').modal('hide');
-					loadTagList();
+					$('#addCategoryModal').modal('hide');
+					loadCategoryList();
 					autoCloseAlert(data.info, 1000);
 				} else {
 					autoCloseAlert(data.info, 1000);
@@ -123,15 +124,15 @@ function saveAddTag() {
 }
 
 // 校验
-function validateTag() {
-	var tagName = $("#tagName").val();
-	if (!isEmpty(tagName)) {
-		if (isSpecialSymbols(tagName)) {
-			autoCloseAlert("标签不能包含特殊符号", 1000);
+function validateCategory() {
+	var categoryName = $("#categoryName").val();
+	if (!isEmpty(categoryName)) {
+		if (isSpecialSymbols(categoryName)) {
+			autoCloseAlert("栏目不能包含特殊符号", 1000);
 			return false;
 		}
 	} else {
-		autoCloseAlert("标签不能为空", 1000);
+		autoCloseAlert("栏目不能为空", 1000);
 		return false;
 	}
 
@@ -139,14 +140,14 @@ function validateTag() {
 }
 
 // 跳转新增页面
-function addTag() {
+function addCategory() {
 	$.ajax({
-		url : getRootPath() + 'admin/tag/addJump',
+		url : getRootPath() + 'admin/category/addJump',
 		success : function(data) {
-			$('#addTagContent').html(data);
-			$('#addTagModal').modal('show');
-			$('#addTagModal').addClass('animated');
-			$('#addTagModal').addClass('bounceInLeft');
+			$('#addCategoryContent').html(data);
+			$('#addCategoryModal').modal('show');
+			$('#addCategoryModal').addClass('animated');
+			$('#addCategoryModal').addClass('bounceInLeft');
 		}
 	});
 }

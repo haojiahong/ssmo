@@ -19,7 +19,7 @@
          <td>${tag.tagName}</td>
          <td>
          	<button class="btn btn-primary btn-xs" type="button" title="编辑" onclick="editTag(${tag.id})">编辑</button>
-         	<button class="btn btn-primary btn-xs" type="button" title="删除" onclick="deleteTag(${tag.id})">删除</button>
+         	<button class="btn btn-danger btn-xs" type="button" title="删除" onclick="deleteTag(${tag.id})">删除</button>
          </td>
      </tr>
 	</c:forEach>

@@ -11,18 +11,11 @@ public interface TagMapper {
 
 	List<Tag> getTagList(HashMap<String, Object> paramMap);
 
-	int addTag(Tag tag);
-
-	int deleteTag(String id);
-
 	Tag getTagById(String id);
+
+	int addTag(Tag tag);
 
 	int editTag(Tag tag);
 
-	List<Tag> getAllTagList();
-
-	List<Tag> getArticleTagList(String id);
-
-	Tag getTagByName(String tagName);
-
+	int deleteTag(String id);
 }

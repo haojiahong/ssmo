@@ -1,7 +1,5 @@
 package com.hjh.ssmo.controller.blog;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,65 +12,59 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.druid.util.StringUtils;
-import com.hjh.ssmo.model.blog.Tag;
+import com.hjh.ssmo.model.blog.Friend;
 import com.hjh.ssmo.model.view.Pager;
 import com.hjh.ssmo.model.view.Result;
-import com.hjh.ssmo.service.blog.TagService;
+import com.hjh.ssmo.service.blog.FriendService;
 import com.hjh.ssmo.util.Constant;
 import com.hjh.ssmo.util.JsonUtil;
 
 @Controller
-public class TagController {
+public class FriendController {
 
 	@Autowired
-	private TagService tagService;
+	private FriendService friendService;
 
 	/**
 	 * 跳转列表
 	 */
-	@RequestMapping(value = "/admin/tag/list")
+	@RequestMapping(value = "/admin/friend/list")
 	public String list(HttpSession session, ModelMap map) {
-		return "/admin/tag/tag_list";
+		return "/admin/friend/friend_list";
 	}
 
 	/**
 	 * 获取分页列表
 	 */
-	@RequestMapping(value = "/admin/tag/load")
-	public String loadTagPageList(HttpSession session, ModelMap map, String param, Pager<Tag> pager)
-			throws UnsupportedEncodingException {
-
+	@RequestMapping(value = "/admin/friend/load")
+	public String loadFriendPageList(HttpSession session, ModelMap map, String param, Pager<Friend> pager) {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
-		Tag tag = JsonUtil.fromJson(param, Tag.class);
-		if (!StringUtils.isEmpty(tag.getTagName())) {
-			tag.setTagName(URLDecoder.decode(tag.getTagName(), "utf-8"));
-		}
-		paramMap.put("tag", tag);
-		List<Tag> tagList = tagService.getTagList(paramMap, pager);
-		map.put("tagList", tagList);
+		Friend friend = JsonUtil.fromJson(param, Friend.class);
+		paramMap.put("friend", friend);
+		List<Friend> friendList = friendService.getFriendList(paramMap, pager);
+		map.put("friendList", friendList);
 		map.put("pager", pager);
-		return "/admin/tag/tag_pager_list";
+		return "/admin/friend/friend_pager_list";
 	}
 
 	/**
 	 * 跳转编辑页面
 	 */
-	@RequestMapping(value = "/admin/tag/editJump/{id}")
+	@RequestMapping(value = "/admin/friend/editJump/{id}")
 	public String editJump(HttpSession session, ModelMap map, @PathVariable String id) {
-		Tag tag = tagService.getTagById(id);
-		map.put("tag", tag);
-		map.put("tagId", id);
-		return "/admin/tag/edit_tag";
+		Friend friend = friendService.getFriendById(id);
+		map.put("friend", friend);
+		map.put("friendId", id);
+		return "/admin/friend/edit_friend";
 	}
 
 	/**
 	 * 编辑
 	 */
-	@RequestMapping(value = "/admin/tag/edit")
+	@RequestMapping(value = "/admin/friend/edit")
 	public @ResponseBody
-	Result editTag(Tag tag, HttpSession session) {
-		if (tagService.editTag(tag) > 0) {
+	Result editFriend(Friend friend, HttpSession session) {
+		if (friendService.editFriend(friend) > 0) {
 			return new Result("success", Constant.DEAL_SUCCESS);
 		} else {
 			return new Result("fail", Constant.DEAL_FAIL);
@@ -82,19 +74,18 @@ public class TagController {
 	/**
 	 * 跳转添加页面
 	 */
-	@RequestMapping(value = "/admin/tag/addJump")
+	@RequestMapping(value = "/admin/friend/addJump")
 	public String addJump(HttpSession session, ModelMap map) {
-		return "/admin/tag/add_tag";
+		return "/admin/friend/add_friend";
 	}
 
 	/**
 	 * 添加
 	 */
-	@RequestMapping(value = "/admin/tag/add")
+	@RequestMapping(value = "/admin/friend/add")
 	public @ResponseBody
-	Result addTag(Tag tag, HttpSession session) throws UnsupportedEncodingException {
-		tag.setTagName(URLDecoder.decode(tag.getTagName(), "utf-8"));
-		if (tagService.addTag(tag) > 0) {
+	Result addFriend(Friend friend, HttpSession session) {
+		if (friendService.addFriend(friend) > 0) {
 			return new Result("success", Constant.DEAL_SUCCESS);
 		} else {
 			return new Result("fail", Constant.DEAL_FAIL);
@@ -104,10 +95,10 @@ public class TagController {
 	/**
 	 * 删除
 	 */
-	@RequestMapping(value = "/admin/tag/delete/{id}")
+	@RequestMapping(value = "/admin/friend/delete/{id}")
 	public @ResponseBody
-	Result deleteTag(@PathVariable String id) {
-		if (tagService.deleteTag(id) > 0) {
+	Result deleteFriend(@PathVariable String id) {
+		if (friendService.deleteFriend(id) > 0) {
 			return new Result("success", Constant.DEAL_SUCCESS);
 		} else {
 			return new Result("fail", Constant.DEAL_FAIL);
