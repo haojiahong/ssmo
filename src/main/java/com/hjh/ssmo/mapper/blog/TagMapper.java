@@ -11,6 +11,8 @@ public interface TagMapper {
 
 	List<Tag> getTagList(HashMap<String, Object> paramMap);
 
+	List<Tag> getAllTagList();
+
 	Tag getTagById(String id);
 
 	int addTag(Tag tag);
@@ -18,4 +20,7 @@ public interface TagMapper {
 	int editTag(Tag tag);
 
 	int deleteTag(String id);
+
+	List<Tag> getArticleTagList(String id);
+
 }

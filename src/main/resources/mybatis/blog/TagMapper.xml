@@ -21,6 +21,12 @@
 		limit #{start},#{limit}
 	</select>
 
+	<select id="getAllTagList" parameterType="map" resultType="tag">
+		select *
+		from t_tag
+		where 1 = 1
+	</select>
+
 	<select id="getTagById" parameterType="string" resultType="tag">
 		select * from t_tag where id = #{id}
 	</select>
@@ -50,4 +56,12 @@
 		delete from t_tag where id
 		= #{id}
 	</delete>
+
+	<select id="getArticleTagList" parameterType="string"
+		resultType="Tag">
+		select ta.* from t_article_tag aat
+		inner join t_tag ta on
+		aat.tagId = ta.id
+		where aat.articleId = #{id}
+	</select>
 </mapper>

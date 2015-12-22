@@ -10,6 +10,8 @@ public interface CategoryService {
 
 	public List<Category> getCategoryList(HashMap<String, Object> paramMap, Pager<Category> pager);
 
+	public List<Category> getCategoryList();
+
 	public Category getCategoryById(String id);
 
 	public int editCategory(Category category);
@@ -17,5 +19,6 @@ public interface CategoryService {
 	public int addCategory(Category category);
 
 	public int deleteCategory(String id);
+
 
 }

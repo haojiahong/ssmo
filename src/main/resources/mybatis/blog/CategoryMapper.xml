@@ -22,6 +22,12 @@
 		limit #{start},#{limit}
 	</select>
 
+	<select id="getAllCategoryList" resultType="category">
+		select * from t_category
+		where 1 = 1
+		order by sortNum desc
+	</select>
+
 	<select id="getCategoryById" parameterType="string" resultType="category">
 		select * from t_category where id = #{id}
 	</select>
@@ -30,7 +36,8 @@
 		update t_category
 		set
 		categoryName = #{categoryName} ,aliasName =
-		#{aliasName} , iconClass = #{iconClass}, sortNum = #{sortNum}
+		#{aliasName} , iconClass =
+		#{iconClass}, sortNum = #{sortNum}
 		where id = #{id}
 	</update>
 

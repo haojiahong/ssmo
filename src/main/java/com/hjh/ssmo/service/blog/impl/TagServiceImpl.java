@@ -10,6 +10,7 @@ import com.hjh.ssmo.mapper.blog.TagMapper;
 import com.hjh.ssmo.model.blog.Tag;
 import com.hjh.ssmo.model.view.Pager;
 import com.hjh.ssmo.service.blog.TagService;
+import com.hjh.ssmo.util.cache.EhcacheUtil;
 
 @Component("tagService")
 public class TagServiceImpl implements TagService {
@@ -25,6 +26,16 @@ public class TagServiceImpl implements TagService {
 			paramMap.put("start", pager.getStart());
 			paramMap.put("limit", pager.getLimit());
 			tagList = tagMapper.getTagList(paramMap);
+		}
+		return tagList;
+	}
+
+	@Override
+	public List<Tag> getTagList() {
+		List<Tag> tagList = (List<Tag>) EhcacheUtil.get("defaultCache", "tagList");
+		if (tagList == null) {
+			tagList = tagMapper.getAllTagList();
+			EhcacheUtil.put("defaultCache", "tagList", tagList);
 		}
 		return tagList;
 	}
@@ -47,5 +58,10 @@ public class TagServiceImpl implements TagService {
 	@Override
 	public int deleteTag(String id) {
 		return tagMapper.deleteTag(id);
+	}
+	
+	@Override
+	public List<Tag> getArticleTagList(String id) {
+		return tagMapper.getArticleTagList(id);
 	}
 }

@@ -10,6 +10,7 @@ import com.hjh.ssmo.mapper.blog.CategoryMapper;
 import com.hjh.ssmo.model.blog.Category;
 import com.hjh.ssmo.model.view.Pager;
 import com.hjh.ssmo.service.blog.CategoryService;
+import com.hjh.ssmo.util.cache.EhcacheUtil;
 
 @Component("categoryService")
 public class CategoryServiceImpl implements CategoryService {
@@ -25,6 +26,16 @@ public class CategoryServiceImpl implements CategoryService {
 			paramMap.put("start", pager.getStart());
 			paramMap.put("limit", pager.getLimit());
 			categoryList = categoryMapper.getCategoryList(paramMap);
+		}
+		return categoryList;
+	}
+
+	@Override
+	public List<Category> getCategoryList() {
+		List<Category> categoryList = (List<Category>) EhcacheUtil.get("defaultCache", "categoryList");
+		if (categoryList == null) {
+			categoryList = categoryMapper.getAllCategoryList();
+			EhcacheUtil.put("defaultCache", "categoryList", categoryList);
 		}
 		return categoryList;
 	}

@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=src/main/webapp/jslib/jquery,src/main/webapp/jslib/flavr,src/main/webapp/jslib/ueditor1_4_3
+validator.Unchecked=

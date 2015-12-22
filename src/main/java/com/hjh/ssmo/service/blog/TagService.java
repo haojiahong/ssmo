@@ -10,6 +10,8 @@ public interface TagService {
 
 	public List<Tag> getTagList(HashMap<String, Object> paramMap, Pager<Tag> pager);
 
+	public List<Tag> getTagList();
+
 	public Tag getTagById(String id);
 
 	public int editTag(Tag tag);
@@ -17,5 +19,7 @@ public interface TagService {
 	public int addTag(Tag tag);
 
 	public int deleteTag(String id);
+
+	public List<Tag> getArticleTagList(String id);
 
 }

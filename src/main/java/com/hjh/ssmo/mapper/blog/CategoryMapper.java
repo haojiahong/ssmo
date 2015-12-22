@@ -11,6 +11,8 @@ public interface CategoryMapper {
 
 	List<Category> getCategoryList(HashMap<String, Object> paramMap);
 
+	List<Category> getAllCategoryList();
+
 	Category getCategoryById(String id);
 
 	int addCategory(Category category);
@@ -18,4 +20,5 @@ public interface CategoryMapper {
 	int editCategory(Category category);
 
 	int deleteCategory(String id);
+
 }
