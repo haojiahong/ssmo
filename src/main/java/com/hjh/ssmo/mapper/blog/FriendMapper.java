@@ -18,4 +18,6 @@ public interface FriendMapper {
 	int editFriend(Friend friend);
 
 	int deleteFriend(String id);
+
+	List<Friend> getAllFriendList();
 }

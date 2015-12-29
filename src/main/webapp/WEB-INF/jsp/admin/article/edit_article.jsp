@@ -8,20 +8,30 @@
 <head>
 <title>add_article</title>
 <meta charset="utf-8">
-	<!-- bootstrap移动设备优先 -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="${pageContext.request.contextPath}/jslib/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
- 	<link href="${pageContext.request.contextPath}/cssstyle/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/cssstyle/animate.css" rel="stylesheet" type="text/css">
-	<!-- pace -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/jquery-plugins/pace/pace-theme-barber-shop.css" />
-	<!-- 提示框 -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/animate.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/flavr.css" />
-	<!-- 多选框 -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/jquery-plugins/chosen/chosen.css" />
-	<!-- 很厉害的css-->
-	<link href="${pageContext.request.contextPath}/cssstyle/style.css" rel="stylesheet" type="text/css">
+<!-- bootstrap移动设备优先 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="${pageContext.request.contextPath}/jslib/bootstrap-3.3.5/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/cssstyle/font-awesome/css/font-awesome.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/cssstyle/animate.css"
+	rel="stylesheet" type="text/css">
+<!-- pace -->
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/jslib/jquery-plugins/pace/pace-theme-barber-shop.css" />
+<!-- 提示框 -->
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/animate.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/flavr.css" />
+<!-- 多选框 -->
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/jslib/jquery-plugins/chosen/chosen.css" />
+<!-- 很厉害的css-->
+<link href="${pageContext.request.contextPath}/cssstyle/style.css"
+	rel="stylesheet" type="text/css">
 <style>
 .input-upload {
 	position: relative;
@@ -57,7 +67,7 @@
 			</div>
 
 			<div class="wrapper wrapper-content animated fadeInRight">
-
+				<input type="hidden" name="id" id="id" value="${article.id}" />
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="ibox float-e-margins">
@@ -69,7 +79,10 @@
 											<select class="form-control m-b" id="categoryId">
 												<option value="-1">请选择</option>
 												<c:forEach items="${categoryList}" var="category">
-													<option value="${category.id}">${category.categoryName}</option>
+													<option value="${category.id}"
+														<c:if test="${article.categoryId == category.id}">
+	                                                		selected
+	                                                	</c:if>>${category.categoryName}</option>
 												</c:forEach>
 											</select>
 										</div>
@@ -79,14 +92,14 @@
 										<label class="col-sm-2 control-label">标题:</label>
 										<div class="col-sm-10">
 											<input type="text" id="title" class="form-control"
-												placeholder="请输入标题">
+												placeholder="请输入标题" value="${article.title}">
 										</div>
 									</div>
 									<div class="hr-line-dashed"></div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">内容:</label>
 										<div class="col-sm-10">
-											<script id="editor" type="text/plain"></script>
+											<script id="editor" type="text/plain"> ${article.content} </script>
 										</div>
 									</div>
 									<div class="hr-line-dashed"></div>
@@ -96,8 +109,14 @@
 										<div class="col-sm-10">
 											<select data-placeholder="请选择标签" class="chosen-select"
 												multiple style="width:450px;" tabindex="5">
-												<c:forEach items="${tagList}" var="tag">
-													<option value="${tag.id}" hassubinfo="true">${tag.tagName}</option>
+												<c:forEach items="${allTagList}" var="allTag">
+													<option value="${allTag.id}" hassubinfo="true"
+														<c:if test="${tagList != null && fn:length(tagList) > 0}">
+	                                            			<c:forEach items="${tagList}" var="tag">
+		                                            			<c:if test="${allTag.id == tag.id}">selected </c:if>
+															</c:forEach>
+														</c:if> > ${allTag.tagName}
+													</option>
 												</c:forEach>
 											</select>
 										</div>
@@ -106,9 +125,9 @@
 									<div class="form-group">
 										<div class="col-sm-4 col-sm-offset-2">
 											<button class="btn btn-primary" type="button"
-												onclick="saveArticle()">保存内容</button>
+												onclick="editArticle()">保存内容</button>
 											<button class="btn btn-white" type="button"
-												onclick="cancelSaveArticle()">取消</button>
+												onclick="cancleEditArticle()">取消</button>
 										</div>
 									</div>
 								</form>
@@ -149,7 +168,7 @@
 	<script type="text/javascript" charset="utf-8"
 		src="${pageContext.request.contextPath}/jslib/jquery-plugins/chosen/chosen.jquery.js"></script>
 	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/js/article/add_article.js"></script>
+		src="${pageContext.request.contextPath}/js/article/edit_article.js"></script>
 
 
 	<script type="text/javascript">
@@ -162,7 +181,6 @@
 				allow_single_deselect : true
 			});
 		});
-
 	</script>
 
 </body>

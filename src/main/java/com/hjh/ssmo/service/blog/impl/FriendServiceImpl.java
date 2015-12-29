@@ -10,6 +10,7 @@ import com.hjh.ssmo.mapper.blog.FriendMapper;
 import com.hjh.ssmo.model.blog.Friend;
 import com.hjh.ssmo.model.view.Pager;
 import com.hjh.ssmo.service.blog.FriendService;
+import com.hjh.ssmo.util.cache.EhcacheUtil;
 
 @Component("friendService")
 public class FriendServiceImpl implements FriendService {
@@ -47,5 +48,15 @@ public class FriendServiceImpl implements FriendService {
 	@Override
 	public int deleteFriend(String id) {
 		return friendMapper.deleteFriend(id);
+	}
+	
+	@Override
+	public List<Friend> getAllFriendList() {
+		List<Friend> friendList = (List<Friend>)EhcacheUtil.get("defaultCache", "friendList");
+		if(friendList == null){
+			friendList = friendMapper.getAllFriendList();
+			EhcacheUtil.put("defaultCache", "friendList",friendList);
+		}
+		return friendList;
 	}
 }
