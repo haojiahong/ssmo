@@ -20,4 +20,12 @@ public interface ArticleService {
 
 	public int updateStatue(Article article);
 
+	/**
+	 * 获取最新文章列表
+	 * 
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Article> getLastArticleList(HashMap<String, Object> paramMap);
+
 }

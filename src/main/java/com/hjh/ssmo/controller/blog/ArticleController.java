@@ -26,6 +26,7 @@ import com.hjh.ssmo.service.blog.FriendService;
 import com.hjh.ssmo.service.blog.TagService;
 import com.hjh.ssmo.util.Constant;
 import com.hjh.ssmo.util.JsonUtil;
+import com.hjh.ssmo.util.SsmoCommonUtil;
 import com.hjh.ssmo.util.listener.SystemListener;
 
 @Controller
@@ -182,6 +183,38 @@ public class ArticleController {
 		} else {
 			return new Result("fail", Constant.DEAL_FAIL);
 		}
+	}
+
+	/**
+	 * 获取文章分页列表
+	 */
+	@RequestMapping(value = "/article/loadPage/{categoryId}/{articleId}")
+	public String loadPage(HttpSession session, ModelMap map, @PathVariable String articleId,
+			@PathVariable String categoryId) throws UnsupportedEncodingException {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("categoryId", categoryId);
+		paramMap.put("articleId", articleId);
+		// 最新的文章列表
+		List<Article> articleList = articleService.getLastArticleList(paramMap);
+		if (!SsmoCommonUtil.isEmptyCollection(articleList)) {
+			int i = 1;
+			for (Article article : articleList) {
+				// 获取标签
+				List<Tag> tList = tagService.getArticleTagList(String.valueOf(article.getId()));
+				article.setTagList(tList);
+				// 获取图片
+				// String imageUrl =
+				// articleService.getArticleImageUrl(String.valueOf(article.getId()));
+				// article.setImageUrl(imageUrl);
+
+				if (i == articleList.size()) {
+					map.put("articleId", article.getId());
+				}
+				i++;
+			}
+		}
+		map.put("articleList", articleList);
+		return "/blog/article/article_pager";
 	}
 
 }

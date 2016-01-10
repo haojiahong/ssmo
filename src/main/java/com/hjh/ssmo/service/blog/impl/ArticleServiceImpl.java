@@ -113,4 +113,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.updateStatue(article);
 	}
 
+	@Override
+	public List<Article> getLastArticleList(HashMap<String, Object> paramMap) {
+		List<Article> articleList = articleMapper.getLastArticleList(paramMap);
+		return articleList;
+	}
+
 }
