@@ -75,7 +75,7 @@
 </div>
 </div>
             
-<jsp:include page="../../sys/footer.jsp" flush="true"></jsp:include>
+<jsp:include page="../../syscommon/footer.jsp" flush="true"></jsp:include>
 
 </div>
 </div>

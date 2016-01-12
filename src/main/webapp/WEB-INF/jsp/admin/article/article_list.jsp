@@ -18,12 +18,30 @@
 	<!-- 提示框 -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/flavr.css" />
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/jslib/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    
 	<link href="${pageContext.request.contextPath}/cssstyle/style.css" rel="stylesheet" type="text/css" >
+	
+	<style>
+		.btn-circle {
+		  width: 20px;
+		  height: 20px;
+		  border-radius: 10px;
+		}
+		.fa{
+		
+		  position: relative;
+		  top: -3px;
+		}
+	</style>
 	
 </head>
 <body>
 <div id="wrapper">
-  
+
+<jsp:include page="../menu_tree.jsp" flush="true"></jsp:include>
+
 <div id="page-wrapper"  class="gray-bg dashbard-1">
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-md-10">
@@ -90,7 +108,7 @@
 </div>
 </div>
             
-<jsp:include page="../../sys/footer.jsp" flush="true"></jsp:include>
+<jsp:include page="../../syscommon/footer.jsp" flush="true"></jsp:include>
 
 </div>
 </div>
@@ -122,6 +140,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/flavr/base.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/hplus.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/validation.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/zTree_v3/js/jquery.ztree.all-3.5.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/article/article.js"></script>
 
 </body>

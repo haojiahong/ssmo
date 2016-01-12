@@ -1,3 +1,5 @@
+#Tue Jan 12 09:34:05 CST 2016
 eclipse.preferences.version=1
-validator.Checked=src/main/webapp/WEB-INF/jsp/admin/article/edit_article.jsp,src/main/webapp/jslib/jquery,src/main/webapp/jslib/flavr,src/main/webapp/jslib/ueditor1_4_3
+validator.Checked=src/main/webapp/jslib,src/main/webapp/WEB-INF/jsp/admin/article/edit_article.jsp
+validator.Revalidate=true
 validator.Unchecked=

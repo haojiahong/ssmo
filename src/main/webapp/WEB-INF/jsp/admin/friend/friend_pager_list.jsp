@@ -32,4 +32,4 @@
 	</tbody>
 </table>
 
-<jsp:include page="../../sys/pager.jsp" flush="true"></jsp:include>
+<jsp:include page="../../syscommon/pager.jsp" flush="true"></jsp:include>

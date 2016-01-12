@@ -2,10 +2,13 @@ package com.hjh.ssmo.service.sys.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Service;
+
 import com.hjh.ssmo.mapper.sys.LoginMapper;
 import com.hjh.ssmo.model.sys.Manager;
 import com.hjh.ssmo.service.sys.LoginService;
 
+@Service("loginService")
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
