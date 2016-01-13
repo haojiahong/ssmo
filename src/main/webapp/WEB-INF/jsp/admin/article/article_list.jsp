@@ -138,9 +138,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-plugins/pace/pace.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/flavr/flavr/js/flavr.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/flavr/base.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/zTree_v3/js/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-plugins/metisMenu/jquery.metisMenu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/hplus.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/validation.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/zTree_v3/js/jquery.ztree.all-3.5.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/article/article.js"></script>
 
 </body>

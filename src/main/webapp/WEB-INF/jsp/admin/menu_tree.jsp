@@ -6,6 +6,7 @@
 .img-circle {
 	width: 64px;
 }
+
 </style>
 
 <nav class="navbar-default navbar-static-side" role="navigation">
