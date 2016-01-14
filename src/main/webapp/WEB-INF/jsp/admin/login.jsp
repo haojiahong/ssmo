@@ -9,18 +9,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
     <title>后台  - 登录</title>
-    <link href="${pageContext.request.contextPath}/jslib/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
-	<link href="${pageContext.request.contextPath}/cssstyle/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" >
-	<link href="${pageContext.request.contextPath}/cssstyle/animate.css" rel="stylesheet" type="text/css" >
-	<!-- pace -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/jquery-plugins/pace/pace-theme-barber-shop.css" />
-	<!-- toastr -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/jquery-plugins/toastr/toastr.min.css" />
-	<!-- 提示框 -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/flavr/flavr/css/flavr.css" />
-	<link href="${pageContext.request.contextPath}/cssstyle/style.css" rel="stylesheet" type="text/css" >
-	
+    <jsp:include page="../syscommon/admin_inc.jsp"></jsp:include>
+    
 	<style>
 	.loginscreen.middle-box{padding-top:260px;}
 	</style>
@@ -47,15 +37,6 @@
         </div>
     </div>
 
-<!-- Mainly scripts -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-plugins/pace/pace.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-plugins/toastr/toastr.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/flavr/flavr/js/flavr.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/flavr/base.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/hplus.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/validation.js"></script>
 <script type="text/javascript">
 	toastr.options = {
 				  "closeButton": true,
@@ -71,7 +52,7 @@
 				  "hideEasing": "linear",
 				  "showMethod": "fadeIn",
 				  "hideMethod": "fadeOut"
-	}
+	};
 	
 	// 登录
 	function login(){
@@ -102,7 +83,7 @@
 					return false;
 				}
 			}
-		})
+		});
 	}
 </script>
 </body>

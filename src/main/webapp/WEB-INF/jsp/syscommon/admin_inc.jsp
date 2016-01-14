@@ -19,6 +19,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/jquery-plugins/chosen/chosen.css" />
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/jslib/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jslib/jquery-plugins/toastr/toastr.min.css" />
    
 <link href="${pageContext.request.contextPath}/cssstyle/style.css" rel="stylesheet" type="text/css" >
 
@@ -37,6 +39,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/jquery-plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/validation.js"></script>
+
+<script src="${pageContext.request.contextPath}/jslib/jquery-plugins/toastr/toastr.min.js"></script>
 <!-- 通用js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/commonutil/hplus.js"></script>
 
