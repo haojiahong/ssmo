@@ -23,4 +23,12 @@ public class LoginServiceImpl implements LoginService {
 	public Manager getManagerInfo(Manager manager) {
 		return loginMapper.getManagerInfo(manager);
 	}
+
+	/**
+	 * shiro校验登陆使用
+	 */
+	@Override
+	public Manager getManagerByUsername(String username) {
+		return loginMapper.getManagerByUsername(username);
+	}
 }

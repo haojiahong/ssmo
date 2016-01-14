@@ -8,4 +8,6 @@ public interface LoginMapper {
 
 	Manager getManagerInfo(Manager manager);
 
+	Manager getManagerByUsername(String username);
+
 }

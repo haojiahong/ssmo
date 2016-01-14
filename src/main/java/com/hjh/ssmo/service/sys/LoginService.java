@@ -8,4 +8,6 @@ public interface LoginService {
 
 	public Manager getManagerInfo(Manager manager);
 
+	public Manager getManagerByUsername(String username);
+
 }
