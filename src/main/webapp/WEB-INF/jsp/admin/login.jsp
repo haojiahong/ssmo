@@ -70,7 +70,7 @@
 			return false;
 		}
 		$.ajax({
-			url : "admin/login/",
+			url : "admin/login",
 			data: $("#form").serialize(),
 			method : "post",
 			dataType : "json",

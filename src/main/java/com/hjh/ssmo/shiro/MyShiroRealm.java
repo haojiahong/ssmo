@@ -20,8 +20,10 @@ import org.apache.shiro.subject.Subject;
 import com.hjh.ssmo.model.sys.Manager;
 import com.hjh.ssmo.service.sys.LoginService;
 import com.hjh.ssmo.util.Constant;
+import com.hjh.ssmo.util.spring.SpringContext;
 
 public class MyShiroRealm extends AuthorizingRealm {
+	
 	private LoginService loginService;
 
 	// 获取权限信息
@@ -53,6 +55,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		System.out.println("验证当前Subject时获取到token为"
 				+ ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
+		loginService = SpringContext.getBean("loginService");
 		Manager user = loginService.getManagerByUsername(token.getUsername());
 		if (null != user) {
 			AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(),
