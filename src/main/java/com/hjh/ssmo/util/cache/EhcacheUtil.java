@@ -42,8 +42,8 @@ public class EhcacheUtil {
 	public static void main(String[] args) {
 		String key = "key";
 		String value = "hello";
-		EhcacheUtil.put("mytest", key, value);
-		System.out.println(EhcacheUtil.get("mytest", key));
+		EhcacheUtil.put("categoryCache", key, value);
+		System.out.println(EhcacheUtil.get("categoryCache", key));
 	}
 
 }

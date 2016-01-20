@@ -5,6 +5,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import com.hjh.ssmo.util.config.PropertiesFactory;
+import com.hjh.ssmo.util.thread.CategoryThread;
+import com.hjh.ssmo.util.thread.TagThread;
 
 /**
  * @desc 系统监听器 现在主要是读取配置文件用 //haojiahong
@@ -28,15 +30,15 @@ public class SystemListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 		context = event.getServletContext();
 		initConfig(event);
-		// initThread(event);
+		initThread(event);
 	}
 
-	// private void initThread(ServletContextEvent event) {
-	// new Thread(new HtmlThread()).start();
-	// new Thread(new CategoryThread()).start();
-	// new Thread(new TagThread()).start();
-	// new Thread(new LinkCommitThread()).start();
-	// }
+	private void initThread(ServletContextEvent event) {
+		// new Thread(new HtmlThread()).start();
+		new Thread(new CategoryThread()).start();
+		new Thread(new TagThread()).start();
+		// new Thread(new LinkCommitThread()).start();
+	}
 
 	private void initConfig(ServletContextEvent event) {
 		// 读取主配置文件 这里可以把properties和xml配置文件统一放在一个xml中，遍历加载

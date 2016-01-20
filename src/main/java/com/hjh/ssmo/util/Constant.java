@@ -37,7 +37,7 @@ public class Constant {
 	// public static final String HOST_URL = "http://coriger.com";
 
 	// public static final String HOST_URL = "http://localhost:8080/Mr";
-	public static final String HOST_URL = "http://localhost:8888/Mr";
+	public static final String HOST_URL = "http://localhost:8888/ssmo";
 
 	public static final String SYSTEM_ADMINISTRATOR = "admin";
 	public static final String UNKNOWN_SESSION_EXCEPTION = "异常会话!";
