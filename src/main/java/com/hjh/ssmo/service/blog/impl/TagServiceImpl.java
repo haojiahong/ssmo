@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hjh.ssmo.mapper.blog.TagMapper;
+import com.hjh.ssmo.model.blog.Article;
 import com.hjh.ssmo.model.blog.Tag;
 import com.hjh.ssmo.model.view.Pager;
 import com.hjh.ssmo.service.blog.TagService;
@@ -59,9 +60,15 @@ public class TagServiceImpl implements TagService {
 	public int deleteTag(String id) {
 		return tagMapper.deleteTag(id);
 	}
-	
+
 	@Override
 	public List<Tag> getArticleTagList(String id) {
 		return tagMapper.getArticleTagList(id);
+	}
+
+	@Override
+	public List<Article> getLastTagArticleList(HashMap<String, Object> paramMap) {
+		List<Article> articleList = tagMapper.getLastTagArticleList(paramMap);
+		return articleList;
 	}
 }

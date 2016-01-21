@@ -3,6 +3,7 @@ package com.hjh.ssmo.mapper.blog;
 import java.util.HashMap;
 import java.util.List;
 
+import com.hjh.ssmo.model.blog.Article;
 import com.hjh.ssmo.model.blog.Tag;
 
 public interface TagMapper {
@@ -22,5 +23,7 @@ public interface TagMapper {
 	int deleteTag(String id);
 
 	List<Tag> getArticleTagList(String id);
+
+	List<Article> getLastTagArticleList(HashMap<String, Object> paramMap);
 
 }

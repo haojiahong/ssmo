@@ -38,7 +38,7 @@ public class TagThread implements Runnable {
 					long now = new Date().getTime();
 					long before = df.parse(lastUpdateTime).getTime();
 					long l = now - before;
-					if (l > 600 * 1000) { // 超过1分钟自动更新
+					if (l > 600 * 1000) { // 超过10分钟自动更新
 						updateTagCache();
 						lastUpdateTime = df.format(new Date());
 					}
@@ -48,7 +48,7 @@ public class TagThread implements Runnable {
 			}
 
 			try {
-				Thread.sleep(60000);
+				Thread.sleep(60000);//线程睡眠1分钟
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

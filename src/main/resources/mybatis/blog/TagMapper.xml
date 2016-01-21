@@ -4,6 +4,18 @@
 
 <mapper namespace="com.hjh.ssmo.mapper.blog.TagMapper">
 
+	<resultMap type="com.hjh.ssmo.model.blog.Article" id="Article">
+		<id column="id" property="id" />
+		<result column="categoryId" property="categoryId" />
+		<result column="categoryName" property="categoryName" />
+		<result column="aliasName" property="aliasName" />
+		<result column="title" property="title" />
+		<result column="author" property="author" />
+		<result column="statue" property="statue" />
+		<result column="showCount" property="showCount" />
+		<result column="content" property="content" typeHandler="com.hjh.ssmo.util.ConvertBlobTypeHandler" />
+	</resultMap>
+
 	<select id="getTagCount" parameterType="map" resultType="int">
 		select count(1) from t_tag
 		where 1 = 1
@@ -57,11 +69,29 @@
 		= #{id}
 	</delete>
 
-	<select id="getArticleTagList" parameterType="string"
-		resultType="Tag">
+	<select id="getArticleTagList" parameterType="string" resultType="Tag">
 		select ta.* from t_article_tag aat
-		inner join t_tag ta on
+		inner join
+		t_tag ta on
 		aat.tagId = ta.id
 		where aat.articleId = #{id}
+	</select>
+
+	<select id="getLastTagArticleList" parameterType="map" resultMap="Article">
+		select DATE_FORMAT(a.createTime,'%Y-%m-%d %H:%i:%s') as createTime,
+		a.*,c.categoryName,c.aliasName from t_article a
+		inner join t_category c on a.categoryId = c.id
+		inner join t_article_tag t on a.id = t.articleId
+		inner join t_tag ta on
+		t.tagId = ta.id
+		where 1 = 1 and a.statue = 0
+		<if test="tagId != null and tagId !='-1'">
+			and ta.id = #{tagId}
+		</if>
+		<if test="articleId != null">
+			<![CDATA[and a.id < #{articleId}]]>
+		</if>
+		order by a.id desc
+		limit 10
 	</select>
 </mapper>

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,19 +15,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.druid.util.StringUtils;
+import com.hjh.ssmo.model.blog.Article;
 import com.hjh.ssmo.model.blog.Tag;
 import com.hjh.ssmo.model.view.Pager;
 import com.hjh.ssmo.model.view.Result;
+import com.hjh.ssmo.service.blog.ArticleService;
 import com.hjh.ssmo.service.blog.TagService;
 import com.hjh.ssmo.util.Constant;
 import com.hjh.ssmo.util.JsonUtil;
+import com.hjh.ssmo.util.SsmoCommonUtil;
 
 @Controller
 public class TagController {
 
 	@Autowired
 	private TagService tagService;
+	@Autowired
+	private ArticleService articleService;
 
 	/**
 	 * 跳转列表
@@ -113,4 +118,36 @@ public class TagController {
 			return new Result("fail", Constant.DEAL_FAIL);
 		}
 	}
+
+	/**
+	 * 获取文章分页列表
+	 */
+	@RequestMapping(value = "/tag/loadPage/{tagId}/{articleId}")
+	public String loadPage(HttpSession session, ModelMap map, @PathVariable String articleId, @PathVariable String tagId)
+			throws UnsupportedEncodingException {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("tagId", tagId);
+		paramMap.put("articleId", articleId);
+		// 最新的文章列表
+		List<Article> articleList = tagService.getLastTagArticleList(paramMap);
+		if (!SsmoCommonUtil.isEmptyCollection(articleList)) {
+			int i = 1;
+			for (Article article : articleList) {
+				// 获取标签
+				List<Tag> tList = tagService.getArticleTagList(String.valueOf(article.getId()));
+				article.setTagList(tList);
+				// 获取图片
+//				String imageUrl = articleService.getArticleImageUrl(String.valueOf(article.getId()));
+//				article.setImageUrl(imageUrl);
+
+				if (i == articleList.size()) {
+					map.put("articleId", article.getId());
+				}
+				i++;
+			}
+		}
+		map.put("articleList", articleList);
+		return "/blog/tag/article_pager";
+	}
+
 }
